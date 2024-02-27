@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página con Imágenes</title>
+    {% load static %}
+
+    <!-- Bootstrap -->
+    <link href="{% static 'ProyectoEmpresaApp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+     <!-- Fonts -->
+    
+     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{% static 'ProyectoEmpresaApp/css/gestion.css' %}" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: url('../../static/ProyectoEmpresaApp/img/corralon.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+        }
+
+        .imagen-superior {
+            width: 300px; /* Ancho de la imagen superior */
+            height: auto;
+            z-index: 1;
+            border-radius: 10px;
+        }
+
+        .botones {
+            margin-top: 20px;
+        }
+
+        .boton {
+            margin: 0 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img class="imagen-superior" src="../../static/ProyectoEmpresaApp/img/OBOSWV0.jpg" alt="Imagen Superior">
+        <div class="botones">
+            <a class="boton" style="background-color: black;" href="{% url 'Loguear' %}">Iniciar Session</a>
+            <a class="boton" style="background-color: black;" href="{% url 'Autenticacion' %}">Registrarse</a>
+        </div>
+    </div>
+
+    <!-- Bootstrap -->
+  <script src="{% static 'ProyectoEmpresaApp//vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'ProyectoEmpresaApp//vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>

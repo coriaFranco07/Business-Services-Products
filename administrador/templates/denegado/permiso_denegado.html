@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Permiso Denegado</title>
+    {% load static %}
+
+    <!-- Bootstrap -->
+    <link href="{% static 'ProyectoEmpresaApp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+     <!-- Fonts -->
+    
+     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{% static 'ProyectoEmpresaApp/css/gestion.css' %}" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: url('../../static/ProyectoEmpresaApp/img/denegado.jpg');
+            background-size: 100% 150%;
+            background-position: center;
+        }
+
+    </style>
+</head>
+
+<body>
+    <a href="{% url 'inicio:inicio' %}" style="margin-right: 1600px; margin-top: -700px;"><img src="data:image/png;base64,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"/></a>
+    
+    <!-- Bootstrap -->
+  <script src="{% static 'ProyectoEmpresaApp//vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'ProyectoEmpresaApp//vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <!-- BoxIcons -->
+  <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+  
+</body>
+
+</html>

@@ -1,0 +1,31 @@
+{% extends "ProyectoEmpresaApp/base.html" %}
+
+{% block content %}
+    <div class="contenedorFormulario">
+        {% if "valido" in request.GET %}
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Muchas Gracias!!!',
+                    text: 'Pronto estaremos respondiendo su consulta!'
+                });
+            </script>
+        {% else %}
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.min.css">
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Ocurrió un error en la consulta!'
+                });
+            </script>
+        {% endif %}
+        <form action="" method="POST" style="text-align: center;">
+            {% csrf_token %} 
+            <table style="color: white; margin: 20px auto;">{{miFormulario.as_table}}</table>
+            <input type="submit" value="Enviar" style="width: 150px;">
+        </form>
+    </div>
+{% endblock %}

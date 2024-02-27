@@ -1,0 +1,49 @@
+{% extends "ProyectoEmpresaApp/base.html" %}
+
+{% load static %}
+    
+{% block content %}
+
+    <head>
+        <style>
+            .tuclase {
+            text-align: left; 
+            font-family: Arial rgb(255, 255, 255); 
+            font-weight: bold; font-size: 30px; 
+            background:rgb(255, 255, 255); 
+            -webkit-background-clip: text; 
+            -moz-background-clip: text; 
+            background-clip: text; 
+            color: transparent; 
+            text-shadow: 0px 3px 3px rgb(255, 255, 255),0px -1px 1px rgb(255, 255, 255);
+            text-align: center;
+            }
+        </style>
+    </head>
+
+    <br>
+    <div style="background-color: rgba(0, 0, 0, 0.5); text-align: center; margin: 50px auto; padding: 20px; max-width: 500px; border-radius: 10px;">
+        <h4 class="tuclase" style="color: white;">Nuestro equipo</h4>
+    </div>
+
+
+    {% for empleado in empleados %}
+
+        <section class="page-section clearfix">
+            <div class="container">
+                <div class="intro">
+                    <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{{empleado.imagen.url}}" alt="" style="max-width: 380; max-height: 350; margin-left: 290;">
+                    <div class="intro-text left-0 text-center bg-faded p-5 rounded" style="width: 522; max-height: 220;">
+                        <h2 class="section-heading mb-4">
+                            {{ empleado.categorias.nombre }} <br><br>
+                            <span class="section-heading-upper">{{empleado.nombre}}</span>
+                            <span class="section-heading-upper">{{empleado.apellido}}</span>             
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    {% endfor %}
+
+{% endblock %}

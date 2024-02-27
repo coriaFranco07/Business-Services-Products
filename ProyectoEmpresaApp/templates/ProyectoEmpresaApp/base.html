@@ -1,0 +1,133 @@
+
+<html>
+
+<head>
+
+  {% load static %}
+
+  <!-- Bootstrap -->
+  <link href="{% static 'ProyectoEmpresaApp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Fonts -->
+    
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+  <!-- Styles -->
+  <link href="{% static 'ProyectoEmpresaApp/css/gestion.css' %}" rel="stylesheet">
+    
+</head>
+
+<body>
+
+  <br>
+
+  <div style="display: flex; justify-content: space-between; margin-right: 20px;">
+    <div style="text-align: right; padding: 10px; color: white; background-color: rgba(24, 64, 8); margin-left: 1500px; border-radius: 10px;">
+        {% if user.is_authenticated %}
+          <strong>Usuario: {{ user.username }} </strong>  
+        {% endif %}
+    </div>
+    
+    <div style="text-align: right; padding: 10px; color: white; background-color: rgba(24, 64, 8); border-radius: 10px;">
+        {% if user.is_authenticated %}
+            <a href="{% url 'cerrar_sesion' %}" style="color: white; text-decoration: none;"><strong>Cerrar Sesión</strong></a>
+        {% endif %}
+    </div>
+</div>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark py-lg-4" id="mainNav">
+    <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item {% if request.path == '/' %}active{% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'inicio:inicio' %}">Inicio</a>
+          </li>
+          <li class="nav-item {% if request.path == '/servicios/' %}active{% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'servicio:servicio' %}">Servicios</a>
+          </li>
+          <li class="nav-item {% if request.path == '/productos/' %}active{% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'producto:producto' %}">Productos</a>
+          </li>
+          <li class="nav-item {% if request.path == '/empleados/' %}active{% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'empleado:empleado' %}">Empleados</a>
+          </li>
+          <li class="nav-item {% if request.path == '/nosotros/' %}active{% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'nosotros:nosotros' %}">Nosotros</a>
+          </li>
+          <li class="nav-item {% if request.path == '/contacto/' %}active{% endif %} px-lg-4">
+            <a class="nav-link text-uppercase text-expanded" href="{% url 'consultas:consultas' %}">Contacto</a>
+          </li>
+          {% if request.user.is_authenticated %}
+          <div class="btn-group" style="margin: 0;">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color:rgba(24, 64, 8); color: gray;">
+              Admin
+            </button>
+            <div class="dropdown-menu dropdown-menu-right">
+              <a class="dropdown-item" href="{% url 'administrador:usuarios' %}">Usuarios</a>
+              <a class="dropdown-item" href="{% url 'administrador:servicios' %}">Servicios</a>
+              <a class="dropdown-item" href="{% url 'administrador:productos' %}">Productos</a>
+              <a class="dropdown-item" href="{% url 'administrador:productosCategorias' %}">Catg.Productos</a>
+              <a class="dropdown-item" href="{% url 'administrador:empleados' %}">Empleados</a>
+              <a class="dropdown-item" href="{% url 'administrador:empleadosCategorias' %}">Catg.Empleados</a>
+              <a class="dropdown-item" href="{% url 'administrador:preguntas' %}">Preguntas</a>
+              <a class="dropdown-item" href="{% url 'administrador:sucursales' %}">Sucursales</a>
+              <a class="dropdown-item" href="{% url 'administrador:roles' %}">Roles</a>
+            </div>
+          </div>
+          {% endif %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  {% block content %}
+  
+  {% endblock %}
+  
+   
+  <!-- Footer -->
+  <footer class="footer text-faded text-center py-5">
+      <div class="container">
+        <p class="m-0">
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	        <a href="#" class="link">
+	          <span class="fa-stack fa-lg">
+	            <i class="fa fa-circle fa-stack-2x"></i>
+	            <i class="fa fa-instagram fa-stack-1x fa-inverse"></i>
+	          </span>
+	        </a>
+	    </p>
+        <p class="m-0 mbt">
+        	<a href="sample.html" class="link">Política de privacidad</a> ·
+        	<a href="sample.html" class="link">Aviso legal</a> ·
+        	<a href="sample.html" class="link">Cookies</a>
+		</p>
+        <p class="m-0 mbt1">&copy; Gestión de Pedidos 2020</p>
+      </div>
+	</footer>
+
+  <!-- Bootstrap -->
+  <script src="{% static 'ProyectoEmpresaApp/vendor/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'ProyectoEmpresaApp/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+
+</html>

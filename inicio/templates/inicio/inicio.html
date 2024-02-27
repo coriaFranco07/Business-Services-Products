@@ -1,0 +1,263 @@
+{% extends "ProyectoEmpresaApp/base.html" %}
+
+{% load static %}
+    
+{% block content %}
+
+<html>
+
+<head>
+
+    {% load static %}
+
+    <!-- Bootstrap -->
+    <link href="{% static 'ProyectoEmpresaApp/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+     <!-- Fonts -->
+    
+     <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap" rel="stylesheet"> 
+     <link href="https://fonts.googleapis.com/css?family=Lora:400,400i,700,700i" rel="stylesheet">
+
+    <!-- Styles -->
+    <link href="{% static 'ProyectoEmpresaApp/css/gestion.css' %}" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  <style>
+    .slide {
+        position: relative;
+        box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.64);
+        margin-top: 0; /* Eliminar el margen superior */
+        max-width: 1100;
+        max-height: 710;
+        top: -1310px;
+        margin-bottom: 20px;
+        margin-left: 600;
+        
+    }
+
+    .site-heading {
+        margin-top: 20px; /* Ajusta el margen superior del encabezado según sea necesario */
+      
+    }
+    .slide + .page-section {
+    margin-top: -1270px; /* Ajusta el valor según sea necesario */
+    }
+      
+    .slide-open:checked + .slide-item {
+          position: static;
+          opacity: 100;
+    }
+    .slide-item {
+          position: absolute;
+          opacity: 0;
+          -webkit-transition: opacity 0.6s ease-out;
+          transition: opacity 0.6s ease-out;
+      }
+      .slide-item img {
+          display: block;
+          height: auto;
+          max-width: 100%;
+      }
+      .slide-control {
+          background: rgba(0, 0, 0, 0.28);
+          border-radius: 50%;
+          color: #fff;
+          cursor: pointer;
+          display: none;
+          font-size: 40px;
+          height: 40px;
+          line-height: 35px;
+          position: absolute;
+          top: 50%;
+          -webkit-transform: translate(0, -50%);
+          cursor: pointer;
+          -ms-transform: translate(0, -50%);
+          transform: translate(0, -50%);
+          text-align: center;
+          width: 40px;
+          z-index: 10;
+      }
+      .slide-control.prev {
+          left: 2%;
+      }
+      .slide-control.next {
+          right: 2%;
+      }
+      .slide-control:hover {
+          background: rgba(0, 0, 0, 0.8);
+          color: #aaaaaa;
+      }
+      #slide-1:checked ~ .control-1,
+      #slide-2:checked ~ .control-2,
+      #slide-3:checked ~ .control-3 {
+          display: block;
+      }
+      .slide-indicador {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          position: absolute;
+          bottom: 2%;
+          left: 0;
+          right: 0;
+          text-align: center;
+          z-index: 10;
+      }
+      .slide-indicador li {
+          display: inline-block;
+          margin: 0 5px;
+      }
+      .slide-circulo {
+          color: #828282;
+          cursor: pointer;
+          display: block;
+          font-size: 35px;
+      }
+      .slide-circulo:hover {
+          color: #aaaaaa;
+      }
+      #slide-1:checked ~ .control-1 ~ .slide-indicador 
+           li:nth-child(1) .slide-circulo,
+      #slide-2:checked ~ .control-2 ~ .slide-indicador 
+            li:nth-child(2) .slide-circulo,
+      #slide-3:checked ~ .control-3 ~ .slide-indicador 
+            li:nth-child(3) .slide-circulo {
+          color: #428bca;
+      }
+      #titulo {
+          max-width: 100%;
+          position: absolute;
+          padding: 0px;
+          margin: 0px auto;
+          text-align: center;
+          font-size: 27px;
+          color: rgba(255, 255, 255, 1);
+          font-family: 'Open Sans', sans-serif;
+          z-index: 9999;
+          text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), 
+               -1px 0px 2px rgba(255, 255, 255, 0);
+      }
+      .custom {
+            max-width: 480; /* Puedes ajustar el valor según el ancho deseado */
+            max-height: 1000;
+            border: 10px solid rgb(0, 0, 0);
+            margin-left: 80;
+      }
+      .site-heading + .custom {
+      margin-top: -70px; /* Ajusta el valor según sea necesario */
+    }
+
+  </style>
+
+</head>
+
+<body><br>
+
+  <div class="site-heading text-center d-none d-lg-block" style="margin-left: 120px;">
+    <img src="../../static/ProyectoEmpresaApp/img/OBOSWV0.jpg" alt="Nuestro Proyecto" width="400" height="300" style="margin-right: 1300px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+  </div>
+
+  <div class="custom" style="text-align: center; background-color: rgba(24, 64, 8); padding: 20px; border-radius: 10px;">
+    <h2 style="color: white; font-family: 'Arial', sans-serif;">¡Bienvenido a COMPANY!</h2>
+    <p style="color: white; font-family: 'Arial', sans-serif; font-size: 18px;">
+      En COMPANY, nos enorgullecemos de ser tu socio confiable para todos tus proyectos de construcción y renovación. Con años de experiencia en la industria, nos hemos convertido en el principal corralón de materiales en la región. Nuestro compromiso es proporcionarte productos de la más alta calidad y un servicio excepcional para asegurar el éxito de tus proyectos, sin importar su escala.
+    </p>
+    <p style="color: white; font-family: 'Arial', sans-serif; font-size: 18px;">
+      Nuestro equipo altamente capacitado está dedicado a brindarte una experiencia de compra sin complicaciones. Desde asesoramiento experto sobre productos hasta entregas rápidas y eficientes, estamos aquí para ayudarte en cada paso del camino. Valoramos tu tiempo y presupuesto, por lo que trabajamos arduamente para ofrecerte precios competitivos y soluciones personalizadas que se adapten a tus necesidades específicas.
+    </p>
+    <p style="color: white; font-family: 'Arial', sans-serif; font-size: 18px;">
+      Ya sea que estés trabajando en un pequeño proyecto de bricolaje o en un gran desarrollo comercial, 
+      en COMPANY te ofrecemos más que solo materiales de construcción: te ofrecemos una asociación confiable para construir tus sueños. 
+      Únete a nuestra familia de clientes satisfechos y descubre por qué somos el corralón de materiales de confianza en la región. 
+      ¡Esperamos poder servirte pronto y ayudarte a convertir tus ideas en realidad!
+    </p>
+  </div>
+  
+
+  <div class="slide">
+    <div class="slide-inner">
+        <input class="slide-open" type="radio" id="slide-1" 
+              name="slide" aria-hidden="true" hidden="" checked="checked">
+        <div class="slide-item">
+            <img src="../../static/ProyectoEmpresaApp/img/varillas-acero.jpg">
+        </div>
+        <input class="slide-open" type="radio" id="slide-2" 
+              name="slide" aria-hidden="true" hidden="">
+        <div class="slide-item">
+            <img src="../../static/ProyectoEmpresaApp/img/trabajadora.jpg">
+        </div>
+        <input class="slide-open" type="radio" id="slide-3" 
+              name="slide" aria-hidden="true" hidden="">
+        <div class="slide-item">
+            <img src="../../static/ProyectoEmpresaApp/img/obrero.jpg">
+        </div>
+        <label for="slide-3" class="slide-control prev control-1">‹</label>
+        <label for="slide-2" class="slide-control next control-1">›</label>
+        <label for="slide-1" class="slide-control prev control-2">‹</label>
+        <label for="slide-3" class="slide-control next control-2">›</label>
+        <label for="slide-2" class="slide-control prev control-3">‹</label>
+        <label for="slide-1" class="slide-control next control-3">›</label>
+        <ol class="slide-indicador">
+            <li>
+                <label for="slide-1" class="slide-circulo">•</label>
+            </li>
+            <li>
+                <label for="slide-2" class="slide-circulo">•</label>
+            </li>
+            <li>
+                <label for="slide-3" class="slide-circulo">•</label>
+            </li>
+        </ol>
+    </div>
+  </div>
+
+  <!-- Heading -->
+  <section class="page-section clearfix" style="margin-left: 510;">
+    <div class="container">
+      <div class="intro">
+        <img class="intro-img img-fluid mb-3 mb-lg-0 rounded" src="{% static 'ProyectoEmpresaApp/img/corralon.jpg' %}" alt="">
+        <div class="intro-text left-0 text-center bg-faded p-5 rounded">
+          <h2 class="section-heading mb-4" >
+            <span class="section-heading-upper"><strong>Por Qué Elegirnos</strong></span>
+          </h2>
+          <p class="mb-3">
+            <strong><u>Variedad y Calidad:</u></strong> Ofrecemos una amplia gama de materiales de construcción de alta calidad para satisfacer cualquier necesidad.
+            <br><strong><u>Experiencia y Conocimiento:</u></strong> Contamos con años de experiencia en la industria y un equipo experto que está al tanto de las últimas tendencias y tecnologías.
+            <br><strong><u>Atención Personalizada:</u></strong> Nos enorgullecemos de ofrecer un servicio personalizado y atención al cliente excepcional para garantizar la satisfacción de nuestros clientes.
+          </p>
+         
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Message -->
+  <section class="page-section cta">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <div class="cta-inner text-center rounded">
+              <h2 class="section-heading">
+                <span class="section-heading-upper">Variedad excepcional</span>
+                <span class="section-heading-lower">Garantizada</span>
+            </h2>
+            <p class="mb-0">Con más de 50 años de dedicación en la industria, en COMPANY nos enorgullecemos de ofrecer una amplia variedad de materiales de construcción de alta calidad. Estamos comprometidos a brindarte los productos que necesitas para tus proyectos, junto con un servicio puntual y profesional. Nuestro equipo experto está listo para ayudarte en cada paso del camino.</p>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  {% endblock %}
+
+</body>
+
+</html>
+
+
+
+
+
+   

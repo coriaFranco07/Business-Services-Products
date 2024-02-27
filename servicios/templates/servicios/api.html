@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>API en Django</title>
+</head>
+<body>
+    <h1>Datos de la API:</h1>
+    <ul>
+        {% for dato in datos %}
+            <li>{{ dato.compra }}</li> <!-- Reemplaza 'nombre' con el campo que deseas mostrar de la API -->
+        {% endfor %}
+    </ul>
+</body>
+</html>
